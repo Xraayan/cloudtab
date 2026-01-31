@@ -1,18 +1,9 @@
 services:
-  # PostgreSQL Database
-  - type: pserv
-    name: cloudtab-db
-    plan: free
-    runtime: postgresql
-    ipAllowList: []
-    databaseName: cloudtab
-    databaseUser: cloudtab_user
-
-  # Web Service
   - type: web
     name: cloudtab-relay
     runtime: node
     plan: free
+    rootDir: cloud-relay
     buildCommand: npm install
     startCommand: node server.js
     envVars:
@@ -20,10 +11,6 @@ services:
         value: production
       - key: PORT
         value: 10000
-      - key: DATABASE_URL
-        fromDatabase:
-          name: cloudtab-db
-          property: connectionString
       - key: SHOPKEEPER_API_KEY
         generateValue: true
       - key: SESSION_TIMEOUT
@@ -36,4 +23,5 @@ services:
         generateValue: true
       - key: ALLOWED_ORIGINS
         value: https://cloudtab.vercel.app,http://localhost:5173
-    healthCheckPath: /health
+      - key: WS_HEARTBEAT_INTERVAL
+        value: 30000
