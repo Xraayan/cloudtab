@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export function FileUpload({ onUpload, isLoading }) {
+export function FileUpload({ onUpload, isLoading, disabled }) {
   const [dragActive, setDragActive] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [progress, setProgress] = useState(0);
@@ -8,6 +8,7 @@ export function FileUpload({ onUpload, isLoading }) {
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (disabled) return;
     if (e.type === 'dragenter' || e.type === 'dragover') {
       setDragActive(true);
     } else if (e.type === 'dragleave') {
@@ -18,6 +19,7 @@ export function FileUpload({ onUpload, isLoading }) {
   const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (disabled) return;
     setDragActive(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
@@ -26,7 +28,7 @@ export function FileUpload({ onUpload, isLoading }) {
   };
 
   const handleChange = (e) => {
-    if (e.target.files) {
+    if (e.target.files && !disabled) {
       handleFiles(e.target.files);
     }
   };
@@ -42,6 +44,10 @@ export function FileUpload({ onUpload, isLoading }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (disabled) {
+      alert('Shopkeeper is offline. Please wait until they are online.');
+      return;
+    }
     if (selectedFiles.length === 0) {
       alert('Please select at least one file');
       return;
@@ -132,9 +138,9 @@ export function FileUpload({ onUpload, isLoading }) {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={isLoading || selectedFiles.length === 0}
+            disabled={isLoading || selectedFiles.length === 0 || disabled}
           >
-            {isLoading ? '⏳ Uploading...' : '🚀 Upload Files'}
+            {disabled ? '🔴 Shopkeeper Offline' : isLoading ? '⏳ Uploading...' : '🚀 Upload Files'}
           </button>
         </form>
 

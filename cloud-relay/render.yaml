@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: cloudtab-relay
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SHOPKEEPER_API_KEY
+        generateValue: true
+      - key: SESSION_TIMEOUT
+        value: 1800000
+    healthCheckPath: /health

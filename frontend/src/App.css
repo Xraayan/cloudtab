@@ -47,6 +47,32 @@ body {
   font-size: 16px;
 }
 
+.status-indicator {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.status-online {
+  background: #dcfce7;
+  color: #166534;
+  border: 2px solid #22c55e;
+}
+
+.status-offline {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 2px solid #ef4444;
+}
+
+.status-checking {
+  background: #fef3c7;
+  color: #92400e;
+}
+
 /* Drag and Drop Zone */
 .drop-zone {
   border: 3px dashed #667eea;
@@ -469,6 +495,39 @@ body {
 }
 
 /* Warning */
+.session-id-display {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.status-pending {
+  color: #f59e0b;
+}
+
+.status-processing {
+  color: #3b82f6;
+  animation: pulse 2s infinite;
+}
+
+.status-completed {
+  color: #10b981;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.success-message {
+  background-color: #d1fae5;
+  border: 2px solid #10b981;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  color: #065f46;
+}
+
 .warning {
   background: #fff3cd;
   border: 1px solid #ffc107;
