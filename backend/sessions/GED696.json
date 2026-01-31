@@ -1,0 +1,17 @@
+{
+  "sessionId": "GED696",
+  "files": [
+    {
+      "id": "1769859562773_ire1maygd",
+      "name": "Genesis problem statement.pdf",
+      "size": 48864,
+      "type": "application/pdf",
+      "category": "pdf",
+      "uploadedAt": 1769859562786
+    }
+  ],
+  "createdAt": 1769859562767,
+  "expiresAt": 1769859862767,
+  "status": "active",
+  "encryptionKey": "001d50a089ceb0f66ee953135d6299f73c8271bdc62763c650dc5d1a5fc85755"
+}
