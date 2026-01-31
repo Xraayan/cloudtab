@@ -1,20 +1,30 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
 # Dependencies
 node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+venv/
+env/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-
-# Environment variables
-.env
-.env.local
-.env.production
-.env.*.local
 
 # Build outputs
 dist/
 build/
 *.log
+
+# Uploads and sessions (sensitive data)
+backend/uploads/
+backend/sessions/
+local-service/browser-profiles/
+local-service/temp-downloads/
 
 # IDE
 .vscode/
@@ -26,6 +36,11 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
 
 # Vercel
 .vercel
