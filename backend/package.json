@@ -9,7 +9,8 @@
     "dev": "nodemon src/server.js",
     "generate-key": "node generate-key.js",
     "build": "pkg . --targets node18-win-x64 --output ../dist/cloudtab-backend.exe",
-    "build:all": "pkg . --targets node18-win-x64,node18-linux-x64,node18-macos-x64 --out-path ../dist"
+    "build:all": "pkg . --targets node18-win-x64,node18-linux-x64,node18-macos-x64 --out-path ../dist",
+    "deploy": "npm ci --only=production"
   },
   "keywords": [
     "file-upload",
